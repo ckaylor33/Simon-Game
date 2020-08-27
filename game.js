@@ -10,6 +10,7 @@ $(`.btn`).click(function () {
   var userChosenColour = $(this).attr(`id`);
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
+  animatePress(userChosenColour);
 });
 
 //Next sequence for the user
@@ -28,4 +29,13 @@ function nextSequence() {
 function playSound(name) {
   var audio = new Audio(`sounds/${name}.mp3`);
   audio.play();
+}
+
+//animations to user clicks
+
+function animatePress(currentColour) {
+  $(`#${currentColour}`).addClass(`pressed`);
+  setTimeout(function () {
+    $(`#${currentColour}`).removeClass(`pressed`);
+  }, 100);
 }
